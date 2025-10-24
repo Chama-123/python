@@ -1,9 +1,11 @@
 pipeline {
     agent any
     stages {
-        stage('Clone') {
-            steps { git 'https://github.com/your-repo.git' }
-        }
+stage('Clone') {
+    steps { 
+        git credentialsId: 'github-creds', url: 'https://github.com/Chama-123/python.git'
+    }
+}
         stage('Build Docker') {
             steps { sh 'docker build -t python-employee-app .' }
         }
